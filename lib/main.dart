@@ -18,6 +18,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         textTheme: Theme.of(context).textTheme.apply(
               bodyColor: Colors.black87,
+              displayColor: Colors.black87,
+              decorationColor: Colors.black87,
             ),
         inputDecorationTheme: InputDecorationTheme(
           border: const OutlineInputBorder(),
@@ -30,7 +32,7 @@ class MyApp extends StatelessWidget {
           fillColor: Colors.white,
         ),
       ),
-      initialRoute: 'login',
+      initialRoute: 'home',
       routes: {
         'login': (context) => const LoginScreen(),
         'home': (context) => const HomePage(title: 'Home Page'),
