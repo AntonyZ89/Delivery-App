@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -13,7 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int counter = 0;
+  int _selectedCategory = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -47,18 +48,20 @@ class _HomePageState extends State<HomePage> {
                   style: Theme.of(context).textTheme.headline4,
                 ),
                 const HomeSearch(),
-                SizedBox(
+                HomeCarousel(),
+                Container(
                   height: 30,
-                  child: Expanded(
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: const [
-                        FilterButton(),
-                        FilterButton(),
-                        FilterButton(),
-                        FilterButton(),
-                        FilterButton(),
-                      ],
+                  margin: const EdgeInsets.only(bottom: 5),
+                  child: ListView.builder(
+                    itemCount: 30,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) => FilterButton(
+                      onTap: () {
+                        setState(() {
+                          _selectedCategory = index;
+                        });
+                      },
+                      selected: _selectedCategory == index,
                     ),
                   ),
                 ),

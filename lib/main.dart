@@ -1,5 +1,6 @@
 import 'package:first_application/screens/home_page.dart';
 import 'package:first_application/screens/login.dart';
+import 'package:first_application/screens/product_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
       routes: {
         'login': (context) => const LoginScreen(),
         'home': (context) => const HomePage(title: 'Home Page'),
+        'product': (context) => const ProductPage(),
       },
     );
   }

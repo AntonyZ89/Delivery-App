@@ -1,6 +1,12 @@
+export 'favorite_button.dart';
 export 'filter_button.dart';
 export 'home_background.dart';
+export 'home_carousel.dart';
 export 'home_drawer.dart';
 export 'home_search.dart';
 export 'login_form.dart';
+export 'product_banner.dart';
 export 'product_card.dart';
+export 'product_page_detail.dart';
+export 'product_page_footer.dart';
+export 'quantity_product.dart';
