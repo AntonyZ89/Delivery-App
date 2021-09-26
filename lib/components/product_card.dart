@@ -11,10 +11,11 @@ class ProductCard extends StatelessWidget {
       onTap: () {
         Navigator.of(context).pushNamed(
           'product',
-          arguments: const ProductArguments(
+          arguments: const ProductPageArguments(
             name: 'Cheese Burguer',
             image: 'assets/images/hamburger.jpg',
-            price: 'R\$ 2.00',
+            price: 2.5,
+            priceAsCurrency: 'R\$ 2,50',
             description:
                 'Elit ad exercitation dolor enim dolor est minim in velit veniam duis incididunt eu eiusmod.',
           ),

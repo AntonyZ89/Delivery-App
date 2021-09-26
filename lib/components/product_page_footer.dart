@@ -1,19 +1,24 @@
+import 'package:first_application/models/models.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProductPageFooter extends StatelessWidget {
   const ProductPageFooter({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    ProductPageModel productPageProvider =
+        Provider.of<ProductPageModel>(context);
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Flex(
         direction: Axis.horizontal,
         children: [
-          const Text(
-            'R\$ 2.00',
-            style: TextStyle(
+          Text(
+            productPageProvider.totalAsCurrency,
+            style: const TextStyle(
               fontSize: 25,
               fontWeight: FontWeight.bold,
             ),

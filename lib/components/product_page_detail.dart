@@ -3,7 +3,7 @@ import 'package:first_application/components/components.dart';
 import 'package:first_application/screens/product_page.dart';
 
 class ProductPageDetail extends StatelessWidget {
-  final ProductArguments args;
+  final ProductPageArguments args;
 
   const ProductPageDetail({Key? key, required this.args}) : super(key: key);
 
@@ -48,7 +48,7 @@ class ProductPageDetail extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        args.price,
+                        args.priceAsCurrency,
                         textAlign: TextAlign.start,
                         style: Theme.of(context).textTheme.headline4?.merge(
                               const TextStyle(

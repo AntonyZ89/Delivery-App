@@ -14,7 +14,10 @@ class HomeCarousel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
-      options: CarouselOptions(height: 150.0),
+      options: CarouselOptions(
+        height: 150.0,
+        autoPlay: true,
+      ),
       items: banners.map((i) {
         return Builder(
           builder: (BuildContext context) {

@@ -1,5 +1,7 @@
+import 'package:first_application/models/models.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class QuantityProduct extends StatefulWidget {
   const QuantityProduct({Key? key}) : super(key: key);
@@ -9,10 +11,10 @@ class QuantityProduct extends StatefulWidget {
 }
 
 class _QuantityProductState extends State<QuantityProduct> {
-  int _count = 1;
-
   @override
   Widget build(BuildContext context) {
+    ProductPageModel productPageProvider =
+        Provider.of<ProductPageModel>(context);
     return SizedBox(
       height: 25,
       child: Row(
@@ -24,11 +26,7 @@ class _QuantityProductState extends State<QuantityProduct> {
               primary: Colors.grey[200],
             ),
             onPressed: () {
-              if (_count > 1) {
-                setState(() {
-                  _count--;
-                });
-              }
+              productPageProvider.decrease();
             },
             child: const Icon(
               Icons.remove,
@@ -38,7 +36,7 @@ class _QuantityProductState extends State<QuantityProduct> {
           SizedBox(
             width: 50,
             child: Text(
-              _count.toString(),
+              productPageProvider.quantity.toString(),
               textAlign: TextAlign.center,
               style: const TextStyle(
                 fontSize: 16,
@@ -52,9 +50,7 @@ class _QuantityProductState extends State<QuantityProduct> {
               primary: Colors.grey[200],
             ),
             onPressed: () {
-              setState(() {
-                _count++;
-              });
+              productPageProvider.increase();
             },
             child: const Icon(
               Icons.add,

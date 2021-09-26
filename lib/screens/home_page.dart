@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
                     // Create a grid with 2 columns. If you change the scrollDirection to
                     // horizontal, this produces 2 rows.
                     crossAxisCount: 2,
-                    childAspectRatio: (300 / 420), // (width / height)
+                    childAspectRatio: (300 / 430), // (width / height)
 
                     // Generate 100 widgets that display their index in the List.
                     children: const [
