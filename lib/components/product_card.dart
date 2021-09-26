@@ -1,9 +1,12 @@
+import 'package:first_application/models/models.dart';
 import 'package:first_application/screens/product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:first_application/components/components.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({Key? key}) : super(key: key);
+  final ProductModel item;
+
+  const ProductCard({Key? key, required this.item}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,14 +14,7 @@ class ProductCard extends StatelessWidget {
       onTap: () {
         Navigator.of(context).pushNamed(
           'product',
-          arguments: const ProductPageArguments(
-            name: 'Cheese Burguer',
-            image: 'assets/images/hamburger.jpg',
-            price: 2.5,
-            priceAsCurrency: 'R\$ 2,50',
-            description:
-                'Elit ad exercitation dolor enim dolor est minim in velit veniam duis incididunt eu eiusmod.',
-          ),
+          arguments: ProductPageArguments(item),
         );
       },
       child: Container(
@@ -43,19 +39,18 @@ class ProductCard extends StatelessWidget {
                 height: 155,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
-                  child: Image.asset(
-                    'assets/images/hamburger.jpg',
-                  ),
+                  child: Image.network(item.image),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 4.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4.0),
                 child: SizedBox(
                   width: double.infinity,
                   child: Text(
-                    'Cheese Burguer',
+                    item.name,
+                    maxLines: 1,
                     textAlign: TextAlign.left,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.w500,
                       color: Colors.black87,
                     ),
@@ -78,9 +73,9 @@ class ProductCard extends StatelessWidget {
                 width: double.infinity,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text('R\$ 2,00'),
-                    FavoriteButton(),
+                  children: [
+                    Text(item.priceAsCurrency),
+                    const FavoriteButton(),
                   ],
                 ),
               )

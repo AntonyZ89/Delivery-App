@@ -1,4 +1,4 @@
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:first_application/factory/factory.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -70,17 +70,14 @@ class _HomePageState extends State<HomePage> {
                     // Create a grid with 2 columns. If you change the scrollDirection to
                     // horizontal, this produces 2 rows.
                     crossAxisCount: 2,
-                    childAspectRatio: (300 / 430), // (width / height)
+                    childAspectRatio: (300 / 440), // (width / height)
 
-                    // Generate 100 widgets that display their index in the List.
-                    children: const [
-                      ProductCard(),
-                      ProductCard(),
-                      ProductCard(),
-                      ProductCard(),
-                      ProductCard(),
-                      ProductCard(),
-                    ],
+                    children: ProductFactory()
+                        .generateFakeList(length: 10)
+                        .map(
+                          (item) => ProductCard(item: item),
+                        )
+                        .toList(),
                   ),
                 )
               ],

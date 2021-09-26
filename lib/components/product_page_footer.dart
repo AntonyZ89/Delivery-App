@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ProductPageFooter extends StatelessWidget {
-  const ProductPageFooter({Key? key}) : super(key: key);
+  final ProductModel item;
+
+  const ProductPageFooter({Key? key, required this.item}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,10 @@ class ProductPageFooter extends StatelessWidget {
             child: Container(
               margin: const EdgeInsets.only(left: 30),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Provider.of<CartModel>(context, listen: false).add(item);
+                  Navigator.of(context).pushNamed('cart');
+                },
                 child: const Text(
                   'Add to Card',
                   style: TextStyle(

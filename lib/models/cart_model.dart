@@ -13,12 +13,30 @@ class CartModel extends ChangeNotifier {
         (previousValue, element) => previousValue + element.price,
       );
 
+  void increase(String id) {
+    ProductModel? item = _items.firstWhere((item) => item.id == id);
+
+    if (item.quantity < 10) {
+      item.quantity++;
+      notifyListeners();
+    }
+  }
+
+  void decrease(String id) {
+    ProductModel? item = _items.firstWhere((item) => item.id == id);
+
+    if (item.quantity > 1) {
+      item.quantity--;
+      notifyListeners();
+    }
+  }
+
   void add(ProductModel item) {
     _items.add(item);
     notifyListeners();
   }
 
-  void remove(int id) {
+  void remove(String id) {
     // TODO
   }
 

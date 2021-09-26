@@ -3,17 +3,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class QuantityProduct extends StatefulWidget {
-  const QuantityProduct({Key? key}) : super(key: key);
+class CartProductQuantity extends StatefulWidget {
+  final ProductModel item;
+
+  const CartProductQuantity({Key? key, required this.item}) : super(key: key);
 
   @override
-  _QuantityProductState createState() => _QuantityProductState();
+  _CartProductQuantityState createState() => _CartProductQuantityState();
 }
 
-class _QuantityProductState extends State<QuantityProduct> {
+class _CartProductQuantityState extends State<CartProductQuantity> {
   @override
   Widget build(BuildContext context) {
-    ProductPageModel provider = Provider.of<ProductPageModel>(context);
+    CartModel provider = Provider.of<CartModel>(context);
 
     return SizedBox(
       height: 25,
@@ -28,7 +30,7 @@ class _QuantityProductState extends State<QuantityProduct> {
               minimumSize: const Size(30, 20),
             ),
             onPressed: () {
-              provider.decrease();
+              provider.decrease(widget.item.id);
             },
             child: const Icon(
               Icons.remove,
@@ -38,7 +40,7 @@ class _QuantityProductState extends State<QuantityProduct> {
           SizedBox(
             width: 20,
             child: Text(
-              provider.quantity.toString(),
+              widget.item.quantity.toString(),
               textAlign: TextAlign.center,
               style: const TextStyle(
                 fontSize: 16,
@@ -54,7 +56,7 @@ class _QuantityProductState extends State<QuantityProduct> {
               minimumSize: const Size(30, 20),
             ),
             onPressed: () {
-              provider.increase();
+              provider.increase(widget.item.id);
             },
             child: const Icon(
               Icons.add,

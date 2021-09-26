@@ -1,11 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+
 import 'package:first_application/components/components.dart';
 import 'package:first_application/models/models.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-import 'package:provider/provider.dart';
 
 class ProductPage extends StatelessWidget {
   const ProductPage({Key? key}) : super(key: key);
@@ -63,7 +61,7 @@ class ProductPage extends StatelessWidget {
             direction: Axis.vertical,
             children: [
               ProductPageDetail(args: args),
-              const ProductPageFooter(),
+              ProductPageFooter(item: args.item),
             ],
           ),
         ),
@@ -73,15 +71,22 @@ class ProductPage extends StatelessWidget {
 }
 
 class ProductPageArguments {
-  final String name, image, priceAsCurrency, description;
-  final double price;
+  final ProductModel item;
 
-  const ProductPageArguments({
-    Key? key,
-    required this.name,
-    required this.image,
-    required this.price,
-    required this.priceAsCurrency,
-    this.description = '',
-  });
+  String name = '', image = '', description = '';
+  double price = 0;
+
+  String _priceAsCurrency = '';
+
+  ProductPageArguments(this.item) {
+    name = item.name;
+    image = item.image;
+    description = item.description;
+    price = item.price;
+
+    _priceAsCurrency =
+        NumberFormat.simpleCurrency(locale: 'pt-BR').format(price);
+  }
+
+  String get priceAsCurrency => _priceAsCurrency;
 }

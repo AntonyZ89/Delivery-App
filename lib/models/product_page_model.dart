@@ -6,9 +6,9 @@ class ProductPageModel extends ChangeNotifier {
   int _quantity = 1;
   String _totalAsCurrency = '';
 
-  ProductPageModel({required this.price});
+  static const int min = 1, max = 10;
 
-  initState() {
+  ProductPageModel({required this.price}) {
     _setTotalAsCurrency(total);
   }
 
@@ -25,12 +25,14 @@ class ProductPageModel extends ChangeNotifier {
   }
 
   void increase() {
-    _quantity++;
-    _setTotalAsCurrency(total);
+    if (_quantity < max) {
+      _quantity++;
+      _setTotalAsCurrency(total);
+    }
   }
 
   void decrease() {
-    if (_quantity > 1) {
+    if (_quantity > min) {
       _quantity--;
       _setTotalAsCurrency(total);
     }

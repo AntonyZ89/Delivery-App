@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:first_application/models/models.dart';
 import 'package:first_application/components/components.dart';
-import 'package:first_application/screens/product_page.dart';
+import 'package:first_application/screens/screens.dart';
+import 'package:provider/provider.dart';
 
 class ProductPageDetail extends StatelessWidget {
   final ProductPageArguments args;
@@ -19,7 +21,7 @@ class ProductPageDetail extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(32),
-                  child: Image.asset(args.image)),
+                  child: Image.network(args.image)),
             ),
           ),
           Padding(
@@ -74,7 +76,13 @@ class ProductPageDetail extends StatelessWidget {
                     ),
                   ),
                 ),
-                Text(args.description)
+                SizedBox(
+                  width: double.infinity,
+                  child: Text(
+                    args.description,
+                    textAlign: TextAlign.start,
+                  ),
+                ),
               ],
             ),
           )

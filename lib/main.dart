@@ -1,6 +1,4 @@
-import 'package:first_application/screens/home_page.dart';
-import 'package:first_application/screens/login.dart';
-import 'package:first_application/screens/product_page.dart';
+import 'package:first_application/screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -45,6 +43,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: 'home',
       routes: {
+        'cart': (context) => const CartPage(),
         'login': (context) => const LoginScreen(),
         'home': (context) => const HomePage(title: 'Home Page'),
         'product': (context) => const ProductPage(),
