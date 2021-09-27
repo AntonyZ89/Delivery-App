@@ -8,22 +8,21 @@ class CartList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => CartModel(),
-      builder: (context, child) {
-        return Consumer<CartModel>(
-          builder: (context, cart, child) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Column(
-                children: cart.items
-                    .map(
-                      (item) => CartProduct(item: item),
-                    )
-                    .toList(),
-              ),
-            );
-          },
+    return Consumer<CartModel>(
+      builder: (context, cart, child) {
+        return Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: AnimatedList(
+              initialItemCount: cart.items.length,
+              itemBuilder: (context, index, animation) {
+                return CartProduct(
+                  item: cart.items[index],
+                  animation: animation,
+                );
+              },
+            ),
+          ),
         );
       },
     );

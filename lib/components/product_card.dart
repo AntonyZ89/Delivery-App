@@ -37,10 +37,7 @@ class ProductCard extends StatelessWidget {
             children: [
               SizedBox(
                 height: 155,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.network(item.image),
-                ),
+                child: Image.network(item.image),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 4.0),

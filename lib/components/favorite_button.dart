@@ -22,7 +22,7 @@ class _FavoriteButtonState extends State<FavoriteButton> {
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Icon(
           Icons.favorite,
-          color: selected ? Colors.red : Colors.grey,
+          color: selected ? Colors.yellow[600] : Colors.grey,
         ),
       ),
     );

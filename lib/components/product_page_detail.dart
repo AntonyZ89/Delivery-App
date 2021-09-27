@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:first_application/models/models.dart';
 import 'package:first_application/components/components.dart';
 import 'package:first_application/screens/screens.dart';
-import 'package:provider/provider.dart';
 
 class ProductPageDetail extends StatelessWidget {
   final ProductPageArguments args;
@@ -33,10 +31,14 @@ class ProductPageDetail extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        args.name,
-                        textAlign: TextAlign.start,
-                        style: Theme.of(context).textTheme.headline5,
+                      Expanded(
+                        child: Text(
+                          args.name,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.start,
+                          style: Theme.of(context).textTheme.headline5,
+                        ),
                       ),
                       const FavoriteButton(),
                     ],

@@ -37,7 +37,12 @@ class CartModel extends ChangeNotifier {
   }
 
   void remove(String id) {
-    // TODO
+    print(id);
+
+    _items.removeAt(
+      _items.indexWhere((item) => item.id == id),
+    );
+    notifyListeners();
   }
 
   void clear() {

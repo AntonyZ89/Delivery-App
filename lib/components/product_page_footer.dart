@@ -43,6 +43,10 @@ class ProductPageFooter extends StatelessWidget {
                   ),
                 ),
                 style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  elevation: 0,
                   primary: Colors.yellow[600],
                   padding: const EdgeInsets.all(15),
                 ),
