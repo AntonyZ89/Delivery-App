@@ -8,7 +8,7 @@ class CartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cart'),
+        title: const Text('My Order'),
         leading: Container(
           margin: const EdgeInsets.all(10),
           alignment: Alignment.center,
@@ -19,7 +19,7 @@ class CartPage extends StatelessWidget {
               color: Colors.white,
             ),
             style: ElevatedButton.styleFrom(
-              primary: Colors.grey.withOpacity(0.5),
+              primary: Colors.black.withOpacity(0.7),
               elevation: 0,
               padding: const EdgeInsets.all(5),
               minimumSize: const Size(0, 0),
@@ -31,13 +31,16 @@ class CartPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 8),
-        child: Column(
-          children: const [
-            CartLocationCard(),
-            CartList(),
-          ],
+      body: SafeArea(
+        child: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 8),
+          child: Column(
+            children: const [
+              CartLocationCard(),
+              CartList(),
+              CartFooter(),
+            ],
+          ),
         ),
       ),
     );

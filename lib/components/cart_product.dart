@@ -24,11 +24,8 @@ class _CartProductState extends State<CartProduct> {
 
     return FadeTransition(
       opacity: widget.animation,
-      child: SlideTransition(
-        position: Tween(
-          begin: const Offset(1, 0),
-          end: Offset.zero,
-        ).animate(widget.animation),
+      child: SizeTransition(
+        sizeFactor: widget.animation,
         child: Container(
           margin: const EdgeInsets.only(bottom: 16),
           child: Slidable(
@@ -36,28 +33,25 @@ class _CartProductState extends State<CartProduct> {
             actionPane: const SlidableDrawerActionPane(),
             actionExtentRatio: 0.2,
             secondaryActions: [
-              Container(
+              IconSlideAction(
                 color: Colors.transparent,
-                child: IconSlideAction(
-                  color: Colors.transparent,
-                  iconWidget: ElevatedButton(
-                    onPressed: () {
-                      int index = provider.items.indexOf(widget.item);
-                      AnimatedList.of(context).removeItem(
-                        index,
-                        (context, animation) => CartProduct(
-                          item: widget.item,
-                          animation: animation,
-                        ),
-                      );
-                      provider.remove(widget.item.id);
-                    },
-                    child: const Icon(Icons.delete),
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.red,
-                      padding: const EdgeInsets.all(5),
-                      minimumSize: const Size(0, 0),
-                    ),
+                iconWidget: ElevatedButton(
+                  onPressed: () {
+                    int index = provider.items.indexOf(widget.item);
+                    AnimatedList.of(context).removeItem(
+                      index,
+                      (context, animation) => CartProduct(
+                        item: widget.item,
+                        animation: animation,
+                      ),
+                    );
+                    provider.remove(widget.item.id);
+                  },
+                  child: const Icon(Icons.delete),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.red,
+                    padding: const EdgeInsets.all(5),
+                    minimumSize: const Size(0, 0),
                   ),
                 ),
               ),
@@ -104,7 +98,7 @@ class _CartProductState extends State<CartProduct> {
                     ]),
                   ),
                 ),
-                CartProductQuantity(item: widget.item)
+                CartProductQuantity(item: widget.item),
               ],
             ),
           ),

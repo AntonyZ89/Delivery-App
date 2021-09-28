@@ -31,7 +31,8 @@ class ProductPageFooter extends StatelessWidget {
               margin: const EdgeInsets.only(left: 30),
               child: ElevatedButton(
                 onPressed: () {
-                  Provider.of<CartModel>(context, listen: false).add(item);
+                  Provider.of<CartModel>(context, listen: false)
+                      .add(item, productPageProvider.quantity);
                   Navigator.of(context).pushNamed('cart');
                 },
                 child: const Text(

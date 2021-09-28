@@ -10,11 +10,18 @@ class HomeSearch extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextField(
         decoration: InputDecoration(
-          labelText: 'Search...',
+          prefixIcon: const Icon(Icons.search, color: Colors.grey),
+          hintText: 'Search...',
+          hintStyle: const TextStyle(color: Colors.grey),
           filled: true,
           fillColor: Colors.grey[300],
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(30.0),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide.none,
+            borderRadius: BorderRadius.circular(15),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide.none,
+            borderRadius: BorderRadius.circular(15),
           ),
         ),
       ),

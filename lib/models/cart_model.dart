@@ -2,6 +2,7 @@ import 'dart:collection';
 
 import 'package:first_application/models/models.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class CartModel extends ChangeNotifier {
   final List<ProductModel> _items = [];
@@ -10,8 +11,12 @@ class CartModel extends ChangeNotifier {
 
   double get total => _items.fold(
         0,
-        (previousValue, element) => previousValue + element.price,
+        (previousValue, element) =>
+            previousValue + (element.price * element.quantity),
       );
+
+  String get totalAsCurrency =>
+      NumberFormat.simpleCurrency(locale: 'pt-BR').format(total);
 
   void increase(String id) {
     ProductModel? item = _items.firstWhere((item) => item.id == id);
@@ -31,14 +36,20 @@ class CartModel extends ChangeNotifier {
     }
   }
 
-  void add(ProductModel item) {
-    _items.add(item);
+  void add(ProductModel item, int quantity) {
+    int index = _items.indexWhere((element) => element.id == item.id);
+
+    if (index != -1) {
+      items[index].quantity += quantity;
+    } else {
+      item.quantity = quantity;
+      _items.add(item);
+    }
+
     notifyListeners();
   }
 
   void remove(String id) {
-    print(id);
-
     _items.removeAt(
       _items.indexWhere((item) => item.id == id),
     );
