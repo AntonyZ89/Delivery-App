@@ -16,28 +16,13 @@ class ProductPage extends StatelessWidget {
     final viewPadding = MediaQuery.of(context).viewPadding;
 
     return Scaffold(
-      appBar: AppBar(
-        leading: Container(
-          margin: const EdgeInsets.all(10),
-          alignment: Alignment.center,
-          child: TextButton(
-            onPressed: () => Navigator.of(context).pop(),
-            child: const Icon(
-              Icons.chevron_left,
-              color: Colors.white,
-            ),
-            style: ElevatedButton.styleFrom(
-              primary: Colors.grey.withOpacity(0.5),
-              elevation: 0,
-              padding: const EdgeInsets.all(5),
-              minimumSize: const Size(0, 0),
-              alignment: Alignment.center,
-            ),
-          ),
-        ),
-        foregroundColor: Colors.white,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
+      appBar: AppBarDefault(
+        onBack: () {
+          Navigator.of(context).pushNamedAndRemoveUntil(
+            'home',
+            (route) => false,
+          );
+        },
         actions: [
           SizedBox(
             height: 40,

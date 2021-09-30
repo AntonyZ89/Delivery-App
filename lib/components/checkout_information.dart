@@ -11,40 +11,36 @@ class CheckoutInformation extends StatelessWidget {
   Widget build(BuildContext context) {
     CartModel provider = Provider.of<CartModel>(context);
 
-    return Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            margin: const EdgeInsets.only(top: 32, bottom: 16),
-            child: const Text(
-              'Order Information',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          margin: const EdgeInsets.only(top: 32, bottom: 16),
+          child: const Text(
+            'Order Information',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
             ),
           ),
-          Expanded(
-            child: ListView(
-              children: [
-                ...provider.items
-                    .map(
-                      (item) => _Information(
-                        title: '${item.quantity}x',
-                        subtitle: item.name,
-                      ),
-                    )
-                    .toList(growable: false),
-                const _Information(
-                  title: '25 minutes',
-                  subtitle: 'Estimated time',
+        ),
+        Column(
+          children: [
+            ...provider.items
+                .map(
+                  (item) => _Information(
+                    title: '${item.quantity}x',
+                    subtitle: item.name,
+                  ),
                 )
-              ],
-            ),
-          )
-        ],
-      ),
+                .toList(growable: false),
+            const _Information(
+              title: '25 minutes',
+              subtitle: 'Estimated time',
+            )
+          ],
+        ),
+      ],
     );
   }
 }

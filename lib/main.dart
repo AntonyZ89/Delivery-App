@@ -48,6 +48,7 @@ class MyApp extends StatelessWidget {
         'login': (context) => const LoginScreen(),
         'home': (context) => const HomePage(title: 'Home Page'),
         'product': (context) => const ProductPage(),
+        'order_list': (context) => const OrderListPage(),
       },
     );
   }

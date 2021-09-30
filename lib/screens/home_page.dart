@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
                     // Create a grid with 2 columns. If you change the scrollDirection to
                     // horizontal, this produces 2 rows.
                     crossAxisCount: 2,
-                    childAspectRatio: (300 / 440), // (width / height)
+                    childAspectRatio: (300 / 460), // (width / height)
 
                     children: ProductFactory()
                         .generateFakeList(length: 10)

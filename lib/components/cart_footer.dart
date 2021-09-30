@@ -50,9 +50,11 @@ class CartFooter extends StatelessWidget {
             width: double.infinity,
             margin: const EdgeInsets.only(top: 30),
             child: ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed('checkout');
-              },
+              onPressed: cartProvider.items.isNotEmpty
+                  ? () {
+                      Navigator.of(context).pushNamed('checkout');
+                    }
+                  : null,
               child: const Text(
                 'Checkout Order',
                 style: TextStyle(

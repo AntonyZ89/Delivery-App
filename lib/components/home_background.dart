@@ -46,7 +46,11 @@ class HomeBackground extends StatelessWidget {
               ),
             ),
           ),
-          SafeArea(child: child)
+          SafeArea(
+            child: SingleChildScrollView(
+              child: child,
+            ),
+          )
         ],
       ),
     );
