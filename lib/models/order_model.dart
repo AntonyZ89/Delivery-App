@@ -8,6 +8,12 @@ class OrderModel {
   final String id = const Uuid().v4(), createdAt;
   final List<ProductModel> products;
   final int rate;
+  final int status;
+
+  static const statusWaiting = 1;
+  static const statusAccept = 2;
+  static const statusDelivery = 3;
+  static const statusFinished = 4;
 
   num? _total;
   String? _totalAsCurrency;
@@ -16,6 +22,7 @@ class OrderModel {
     required this.createdAt,
     required this.products,
     this.rate = 0,
+    this.status = statusWaiting,
   });
 
   num get total {
@@ -27,7 +34,7 @@ class OrderModel {
 
   String get totalAsCurrency {
     return _totalAsCurrency ??= NumberFormat.simpleCurrency(
-      locale: 'pt-BR',
+      locale: 'en',
     ).format(total);
   }
 }

@@ -14,8 +14,7 @@ class ProductModel {
     required this.description,
     required this.price,
   }) {
-    _priceAsCurrency =
-        NumberFormat.simpleCurrency(locale: 'pt-BR').format(price);
+    _priceAsCurrency = NumberFormat.simpleCurrency(locale: 'en').format(price);
   }
 
   String get priceAsCurrency => _priceAsCurrency;

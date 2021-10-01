@@ -1,11 +1,11 @@
+import 'package:first_application/models/models.dart';
 import 'package:flutter/material.dart';
 import 'package:first_application/components/components.dart';
-import 'package:first_application/screens/screens.dart';
 
 class ProductPageDetail extends StatelessWidget {
-  final ProductPageArguments args;
+  final ProductModel item;
 
-  const ProductPageDetail({Key? key, required this.args}) : super(key: key);
+  const ProductPageDetail({Key? key, required this.item}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class ProductPageDetail extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(32),
-                  child: Image.network(args.image)),
+                  child: Image.network(item.image)),
             ),
           ),
           Padding(
@@ -33,7 +33,7 @@ class ProductPageDetail extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          args.name,
+                          item.name,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.start,
@@ -52,7 +52,7 @@ class ProductPageDetail extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        args.priceAsCurrency,
+                        item.priceAsCurrency,
                         textAlign: TextAlign.start,
                         style: Theme.of(context).textTheme.headline4?.merge(
                               const TextStyle(
@@ -81,7 +81,7 @@ class ProductPageDetail extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: Text(
-                    args.description,
+                    item.description,
                     textAlign: TextAlign.start,
                   ),
                 ),

@@ -21,7 +21,7 @@ class CartModel extends ChangeNotifier {
   }
 
   String get totalAsCurrency =>
-      NumberFormat.simpleCurrency(locale: 'pt-BR').format(total);
+      NumberFormat.simpleCurrency(locale: 'en').format(total);
 
   void increase(String id) {
     ProductModel? item = _items.firstWhere((item) => item.id == id);

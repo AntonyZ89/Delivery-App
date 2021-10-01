@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import 'package:first_application/components/components.dart';
@@ -10,19 +9,12 @@ class ProductPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final args =
-        ModalRoute.of(context)!.settings.arguments as ProductPageArguments;
+    final item = ModalRoute.of(context)!.settings.arguments as ProductModel;
 
     final viewPadding = MediaQuery.of(context).viewPadding;
 
     return Scaffold(
       appBar: AppBarDefault(
-        onBack: () {
-          Navigator.of(context).pushNamedAndRemoveUntil(
-            'home',
-            (route) => false,
-          );
-        },
         actions: [
           SizedBox(
             height: 40,
@@ -41,37 +33,16 @@ class ProductPage extends StatelessWidget {
           bottom: viewPadding.bottom,
         ),
         child: ChangeNotifierProvider<ProductPageModel>(
-          create: (context) => ProductPageModel(price: args.price),
+          create: (context) => ProductPageModel(price: item.price),
           builder: (context, model) => Flex(
             direction: Axis.vertical,
             children: [
-              ProductPageDetail(args: args),
-              ProductPageFooter(item: args.item),
+              ProductPageDetail(item: item),
+              ProductPageFooter(item: item),
             ],
           ),
         ),
       ),
     );
   }
-}
-
-class ProductPageArguments {
-  final ProductModel item;
-
-  String name = '', image = '', description = '';
-  double price = 0;
-
-  String _priceAsCurrency = '';
-
-  ProductPageArguments(this.item) {
-    name = item.name;
-    image = item.image;
-    description = item.description;
-    price = item.price;
-
-    _priceAsCurrency =
-        NumberFormat.simpleCurrency(locale: 'pt-BR').format(price);
-  }
-
-  String get priceAsCurrency => _priceAsCurrency;
 }

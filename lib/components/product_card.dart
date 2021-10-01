@@ -1,6 +1,5 @@
-import 'package:first_application/models/models.dart';
-import 'package:first_application/screens/product_page.dart';
 import 'package:flutter/material.dart';
+import 'package:first_application/models/models.dart';
 import 'package:first_application/components/components.dart';
 
 class ProductCard extends StatelessWidget {
@@ -14,7 +13,7 @@ class ProductCard extends StatelessWidget {
       onTap: () {
         Navigator.of(context).pushNamed(
           'product',
-          arguments: ProductPageArguments(item),
+          arguments: item,
         );
       },
       child: Container(

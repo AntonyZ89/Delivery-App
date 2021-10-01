@@ -15,6 +15,8 @@ export 'home_carousel.dart';
 export 'home_drawer.dart';
 export 'home_search.dart';
 export 'login_form.dart';
+export 'order_detail_historic.dart';
+export 'order_detail_step.dart';
 export 'order_list_card.dart';
 export 'product_banner.dart';
 export 'product_card.dart';

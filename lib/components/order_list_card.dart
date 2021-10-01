@@ -15,61 +15,69 @@ class OrderListCard extends StatelessWidget {
       item.products.length > maxProducts ? maxProducts : item.products.length,
     );
 
-    return Container(
-      width: double.infinity,
-      margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            offset: const Offset(0, 2), //(x,y)
-            blurRadius: 2,
-            spreadRadius: 1,
-          ),
-        ],
-      ),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(bottom: 5),
-                    child: const Text(
-                      'Em andamento - N ${'item.id'}',
-                      overflow: TextOverflow.ellipsis,
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).pushNamed(
+          'order_detail',
+          arguments: item,
+        );
+      },
+      child: Container(
+        width: double.infinity,
+        margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              offset: const Offset(0, 2), //(x,y)
+              blurRadius: 2,
+              spreadRadius: 1,
+            ),
+          ],
+        ),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 5),
+                      child: const Text(
+                        'Em andamento - N ${'item.id'}',
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
-                  ),
-                  ...products.map((product) => _ProductList(item: product)),
-                  Visibility(
-                    visible: item.products.length > maxProducts,
-                    child: Text(
-                      '+ ${item.products.length - maxProducts} products',
-                      style: const TextStyle(fontSize: 12),
+                    ...products.map((product) => _ProductList(item: product)),
+                    Visibility(
+                      visible: item.products.length > maxProducts,
+                      child: Text(
+                        '+ ${item.products.length - maxProducts} products',
+                        style: const TextStyle(fontSize: 12),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              Text(
-                item.totalAsCurrency,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
+                  ],
                 ),
-              ),
-            ],
-          ),
-          const Divider(),
-          _Rate(item.rate),
-        ],
+                Text(
+                  item.totalAsCurrency,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+            const Divider(),
+            _Rate(item.rate),
+          ],
+        ),
       ),
     );
   }

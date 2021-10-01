@@ -19,8 +19,7 @@ class ProductPageModel extends ChangeNotifier {
   String get totalAsCurrency => _totalAsCurrency;
 
   void _setTotalAsCurrency(double total) {
-    _totalAsCurrency =
-        NumberFormat.simpleCurrency(locale: 'pt-BR').format(total);
+    _totalAsCurrency = NumberFormat.simpleCurrency(locale: 'en').format(total);
     notifyListeners();
   }
 
