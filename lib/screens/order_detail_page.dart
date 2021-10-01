@@ -13,6 +13,9 @@ class OrderDetailPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBarDefault(
+        onBack: () {
+          Navigator.of(context).pushNamed('order_list');
+        },
         actions: [
           Padding(
             padding: const EdgeInsets.all(10),

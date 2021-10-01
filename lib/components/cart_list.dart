@@ -16,10 +16,9 @@ class CartList extends StatelessWidget {
             child: AnimatedList(
               initialItemCount: cart.items.length,
               itemBuilder: (context, index, animation) {
-                return CartProduct(
-                  item: cart.items[index],
-                  animation: animation,
-                );
+                return cart.items.length > index
+                    ? CartProduct(item: cart.items[index], animation: animation)
+                    : Container();
               },
             ),
           ),

@@ -7,7 +7,7 @@ class CheckoutFooter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CartModel cartProvider = Provider.of<CartModel>(context, listen: false);
+    CartModel cartProvider = Provider.of<CartModel>(context);
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -50,8 +50,11 @@ class CheckoutFooter extends StatelessWidget {
             margin: const EdgeInsets.only(top: 30),
             child: ElevatedButton(
               onPressed: () {
-                Navigator.of(context).popAndPushNamed('order_list');
-                cartProvider.checkout();
+                final order = cartProvider.checkout();
+                Navigator.of(context).pushNamed(
+                  'order_detail',
+                  arguments: order,
+                );
               },
               child: const Text(
                 'Buy Now',

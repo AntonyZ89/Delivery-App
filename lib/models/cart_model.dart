@@ -66,7 +66,7 @@ class CartModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void checkout() {
+  OrderModel checkout() {
     OrderModel order = OrderModel(
       createdAt: DateTime.now().toLocal().toString(),
       products: items,
@@ -75,5 +75,7 @@ class CartModel extends ChangeNotifier {
     _orders.add(order);
 
     clear();
+
+    return order;
   }
 }
