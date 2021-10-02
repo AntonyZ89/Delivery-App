@@ -9,50 +9,50 @@ class HomeBackground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          Positioned(
-            top: -90,
-            right: 0,
-            width: MediaQuery.of(context).size.width,
-            child: Transform(
-              alignment: Alignment.center,
-              transform: Matrix4.rotationY(math.pi),
-              child: SvgPicture.asset(
-                'assets/images/home_background.svg',
-                fit: BoxFit.cover,
-              ),
+    return Stack(
+      fit: StackFit.expand,
+      alignment: Alignment.center,
+      children: [
+        Positioned(
+          top: -90,
+          right: 0,
+          width: MediaQuery.of(context).size.width,
+          child: Transform(
+            alignment: Alignment.center,
+            transform: Matrix4.rotationY(math.pi),
+            child: SvgPicture.asset(
+              'assets/images/home_background.svg',
+              fit: BoxFit.cover,
             ),
           ),
-          Positioned(
-            top: -90,
-            right: -20,
-            child: Container(
-              decoration: BoxDecoration(
+        ),
+        Positioned(
+          top: -90,
+          right: -20,
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(90),
+              border: Border.all(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(90),
-                border: Border.all(
-                  color: Colors.white,
-                  width: 10,
-                ),
-              ),
-              child: Image.asset(
-                'assets/images/pizza.png',
-                width: 180,
+                width: 10,
               ),
             ),
+            child: Image.asset(
+              'assets/images/pizza.png',
+              width: 180,
+            ),
           ),
-          SafeArea(
+        ),
+        Positioned.fill(
+          child: SafeArea(
             child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: child,
             ),
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     );
   }
 }
